@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Core Online Tutorial - Show Book</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/3.0.0/jquery.min.js"
+	th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+
+<link href="../../static/css/spring-core.css"
+	th:href="@{css/spring-core.css}" rel="stylesheet" media="screen" />
+
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-6">
+				<h2>Show Book</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-8">
+				<form class="form-horizontal">
+					<div th:if="${message}" class="alert alert-success">
+						<h2 th:text="${message}">message goes here</h2>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Book Id:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static" th:text="${book.id}">Book Id</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Book Title:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static" th:text="${book.title}">Book
+								Title</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">ISBN:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static" th:text="${book.isbn}">Book Id</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Authors:</label>
+						<div class="col-sm-10" th:each="author : ${book.authors}">
+
+							<p class="form-control-static"
+								th:text="${author.firstName+' '+author.lastName}">author
+								Name</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">publisher:</label>
+						<div class="col-sm-10">
+							<p class="form-control-static" th:text="${book.Publisher.name}">Publisher</p>
+						</div>
+					</div>
+
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
