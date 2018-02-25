@@ -57,7 +57,8 @@
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
-         <input type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password" name="ConfirmPassword" data-fv-notempty="true"
+         <input type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password" name="ConfirmPassword" 
+         								data-fv-notempty="true"
                                        data-fv-notempty-message="Please confirm password"
                                        data-fv-identical="true"
                                        data-fv-identical-field="password"
@@ -94,7 +95,7 @@
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
   
-  <script th:src="@{js/fv.min.js}"></script>
+  <script th:src="@{js/fv.js}"></script>
   <script>
 		$(document).ready(function() {
 		    $('#passwordForm').formValidation({
@@ -164,7 +165,7 @@
 		    });
 		});
 		
-	});
+	
   </script>
 
 </body>

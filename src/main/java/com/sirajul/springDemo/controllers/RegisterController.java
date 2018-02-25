@@ -127,9 +127,22 @@ public class RegisterController {
 
 		Zxcvbn passwordCheck = new Zxcvbn();
 
-		Strength strength = passwordCheck.measure((String) requestParams.get("password"));
+		Strength strengthPassword = passwordCheck.measure((String) requestParams.get("password"));
+		Strength strengthPasswordConfirm = passwordCheck.measure((String) requestParams.get("ConfirmPassword"));
+		// is password and confirm equal ?
+		if (!strengthPassword.equals(strengthPasswordConfirm)) {
+			bindingResult.reject("ConfirmPassword");
 
-		if (strength.getScore() < 3) {
+			redir.addFlashAttribute("errorMessage", "Your password Does not match try again.");
+
+			modelAndView.setViewName("redirect:confirm?token=" + requestParams.get("token"));
+			System.out.println(requestParams.get("token"));
+			return modelAndView;
+		}
+
+		// requestParams.get("password"));
+
+		if (strengthPassword.getScore() < 3) {
 			bindingResult.reject("password");
 
 			redir.addFlashAttribute("errorMessage", "Your password is too weak.  Choose a stronger one.");

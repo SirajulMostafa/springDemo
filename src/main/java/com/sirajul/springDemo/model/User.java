@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Transient;
 
@@ -30,7 +31,8 @@ public class User {
 	private String password;
 
 	@Column(name = "first_name")
-	@NotEmpty(message = "Please provide your first name")
+	@Size(min = 3, max = 6, message = "Please provide your first name  ")
+	//@NotEmpty(message = "Please provide your first name")
 	private String firstName;
 
 	@Column(name = "last_name")
