@@ -2,8 +2,6 @@ package com.sirajul.springDemo.controllers;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +27,8 @@ public class BookController {
 	private AuthorRepository authorRepository;
 	@Autowired
 	private PublisherRepository publisherRepository;
-	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(BookController.class);
 
 	/*
 	 * public BookController(BookRepository bookRepository) { // super();
