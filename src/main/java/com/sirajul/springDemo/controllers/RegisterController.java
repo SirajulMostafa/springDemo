@@ -23,6 +23,7 @@ import com.nulabinc.zxcvbn.Zxcvbn;
 import com.sirajul.springDemo.model.User;
 import com.sirajul.springDemo.services.EmailService;
 import com.sirajul.springDemo.services.UserService;
+
 @Controller
 public class RegisterController {
 
@@ -118,6 +119,7 @@ public class RegisterController {
 	// Process confirmation link
 	@RequestMapping(value = "/confirm", method = RequestMethod.POST)
 	public ModelAndView processConfirmationForm(ModelAndView modelAndView, BindingResult bindingResult,
+
 			@RequestParam Map<?, ?> requestParams, RedirectAttributes redir) {
 		// @RequestParam Map requestParams, RedirectAttributes redir) {
 
@@ -138,16 +140,15 @@ public class RegisterController {
 		}
 
 		// Find the user associated with the reset token
-		String token= (String)requestParams.get("token");
-		
+		String token = (String) requestParams.get("token");
+
 		User user = userService.findByConfirmationToken(token);
 
 		// Set new password
-		String passEncode= bCryptPasswordEncoder.encode((String) requestParams.get("password"));
+		String passEncode = bCryptPasswordEncoder.encode((String) requestParams.get("password"));
 		// String passEncode= bCryptPasswordEncoder.encode((String)
 		// requestParams.get(user.getPassword()));
 		user.setPassword(passEncode);
-
 
 		// Set user to enabled
 		user.setEnabled(true);
