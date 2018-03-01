@@ -127,10 +127,12 @@ public class RegisterController {
 
 		Zxcvbn passwordCheck = new Zxcvbn();
 
+		String password = (String) requestParams.get("password");
+		String ConfirmPassword = (String) requestParams.get("ConfirmPassword");
+
 		Strength strengthPassword = passwordCheck.measure((String) requestParams.get("password"));
-		Strength strengthPasswordConfirm = passwordCheck.measure((String) requestParams.get("ConfirmPassword"));
 		// is password and confirm equal ?
-		if (!strengthPassword.equals(strengthPasswordConfirm)) {
+		if (!password.equals(ConfirmPassword)) {
 			bindingResult.reject("ConfirmPassword");
 
 			redir.addFlashAttribute("errorMessage", "Your password Does not match try again.");
@@ -173,7 +175,7 @@ public class RegisterController {
 		return modelAndView;
 	}
 
-	// Process confirmation link
+	// login form
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String LoginPage(Model model) {
 		return "login";

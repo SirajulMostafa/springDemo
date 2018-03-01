@@ -1,10 +1,17 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>hello  spring demo index page</h1>
+	<h1 sec:isAuthenticated()>hello spring demo index page</h1>
+	<ul>
+		<li><a th:href="@{/books}">Books</a></li>
+		<li><a th:href="@{/authors}">authors</a></li>
+		<li><a th:href="@{/register}">register</a></li>
+	</ul>
 </body>
 </html>
